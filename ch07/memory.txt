@@ -1,0 +1,18 @@
+
+css 관련 용어 공부
+
+block format context(블록  서식  문맥 )
+
+
+쌓임  맥락 (stacking context)
+
+
+MDN (컨테이닝 블록의 모든것) - fireforx를 만든 mozila에서 만든 사이트
+
+* 기본적으로 뒤에 나오는 css가 우선순위가 높습니다.
+* !important > inline style attribute > id > 다른 attribute > tag element 순으로
+우선순위가 높습니다.
+* 우선순위가 가다면 개수가 많은 css가 우선순위가 높습니다.
+
+!importantdhk inline style attribute은 실무에서 사용을 제한하는 경우가 많습니다.
+!important는 css값 뒤에 붙여진 키워드를 의미하고, 인라인 스타일 속성은 태그에 주어진 

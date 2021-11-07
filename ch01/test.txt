@@ -1,0 +1,9 @@
+document.head.parentNode.removeChild(document.head); //css 없앤것
+ 
+ screen.width //screen 화면 가로길이 확인
+ screen.height //screen 화면 높이 확인
+
+ 
+
+웹의 모든 것 : JavaScript
+html, css : 기본기

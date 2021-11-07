@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <style>
+        #title{
+            font-size: 32pt; font-weight: bold;
+            color: green;
+            text-align: center;
+        }
+        #btn_start{
+            font-size: 24pt;
+            margin-top: 10px; margin-bottom: 10px;
+        }
+        #game{
+            line-height: 0%;
+        }
+        img{
+            width: 100px; height: 100px;
+        }
+    </style>
+    <script>
+        var sunsu = new Array();
+        var temp = 0;
+        var imgsource1 = new Array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg",
+            "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg",
+            "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg", "22.jpg", "23.jpg", "24.jpg", "blink.gif");
+        var blink = 0;
+
+        function start() {
+            for (i=0; i<25; i++) {
+                sunsu[i] = Math.round(Math.random()*24);
+                for (j=0; j<i; j++) {
+                    if (sunsu[j] == sunsu[i]) { i--; }
+                }    
+            }
+            show();
+        }
+
+        function show() {
+            for (i=0; i<25; i++) {
+                document.images[i].src = imgsource1[sunsu[i]];
+                if (sunsu[i] == 24) { blink = i; }
+            }
+        }
+
+        function move(i) {
+            var gap = Math.abs(blink - i);
+            if (gap == 1 || gap == 5) {
+                if (blink%5==0 && (blink - i)==1) { return; }
+                else if (blink%5==4 && (blink - i)==-1) { return; }
+                else {
+                    temp = sunsu[i];
+                    sunsu[i] = sunsu[blink];
+                    sunsu[blink] = temp;
+                    show();
+                }
+            }
+            for (j=0; j<=24; j++) {
+                if (sunsu[j] != j) { return; }
+                if (j == 24) { 
+                    alert("퍼즐 완성! 축하합니다"); 
+                    location.reload();
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="title">
+        슬라이드 퍼즐
+    </div>
+    <form align="center">
+        <input type="button" id="btn_start" value="시      작" onclick="start()">
+    </form>
+    <div id="game" align="center">
+        <script>
+            imgsource = new Array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg",
+            "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg",
+            "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg", "22.jpg", "23.jpg", "24.jpg", "25.jpg");
+
+            for (i=0; i<25; i++) {
+                document.write("<img src=" + imgsource[i] + " border=1 onclick='move(" + i + ")'>");
+                if ((i+1)%5==0) { document.write("<br>") };
+            }
+        </script>
+    </div>
+</body>
+</html>

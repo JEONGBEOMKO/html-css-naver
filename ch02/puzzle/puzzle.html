@@ -1,0 +1,73 @@
+<HTML>
+
+<HEAD>
+
+	<script type="text/javascript">
+		//var  flag=false;
+		var sunsu = new Array();
+		var temp = 1;
+		var imgsource1 = new Array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpgs",
+			"8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "blink.gif");
+		var blink = 0;
+
+		function start() {
+			for (a = 0; a < 16; a++) {
+				sunsu[a] = Math.round(Math.random() * 15);
+				for (b = 0; b < a; b++) {
+					if (sunsu[a] == sunsu[b]) { a--; }
+				}// for b end 
+			} //for a end
+
+			mix();
+		}//start end
+
+
+		function mix() {
+			for (i = 0; i < 16; i++) {
+				document.images[i].src = imgsource1[sunsu[i]];
+				if (sunsu[i] == 15) blink = i;
+			}
+		}// mix end
+
+
+		function move(k) {
+			var gap = Math.abs(blink - k)
+			if (gap == 1 || gap == 4) {
+				if(blink%4==0 && (blink-k)==1) {return;}
+				else if(blink%4==3 && (blink - i) == -1) {return;}
+				temp1 = sunsu[k];
+				sunsu[k] = sunsu[blink];
+				sunsu[blink] = temp1;
+				mix();
+			}
+			bingo();
+		}// move end
+
+		function bingo() {
+
+		}// bingo end
+	</script>
+</head>
+
+<body>
+	<font size=7 color=green> <b> 게임시작 </b></font><br>
+	<form>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input id="btn_name" type="button" value=" 시  &nbsp;&nbsp;&nbsp;&nbsp;  작 " onClick="start( )"
+			style="font-size:24pt; font-style:bold; ">
+		<p>
+	</form>
+
+	<script type="text/javascript">
+		imgsource = new Array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg",
+			"9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg");
+
+		for (i = 0; i < 16; i++) {
+			document.write("<img src=" + imgsource[i] + " border = 1 onClick = 'move(" + i + ")'>");
+			if (((i + 1) % 4) == 0) document.write("<br>");
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+
+css 관련 용어 공부
+
+block format context(블록  서식  문맥 )
+
+
+쌓임  맥락 (stacking context)
+
+
+MDN (컨테이닝 블록의 모든것) - fireforx를 만든 mozila에서 만든 사이트
